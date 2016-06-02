@@ -1,7 +1,7 @@
 ---
-layout: post
-title:  "First post!"
-date:   2016-05-25 16:14:15 +0100
+layout: default
+title:  "First post of 2015!"
+date:   2015-05-25 16:14:15 +0100
 author: "Jackie"
 categories: categoryone
 ---
