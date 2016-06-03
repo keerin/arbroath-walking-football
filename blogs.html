@@ -13,11 +13,10 @@ layout: default
                 <h4>
                   <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
                 </h4>
-              <div class="post-detail"><p class="post-meta">Posted by {{ post.author }} on {{ post.date | date: "%b %-d, %Y" }} <a href="#">Comments (10)</a></p></div>
-        			<a href="{{ post.url | prepend: site.baseurl }}"><img src="assets/blog1.jpg" alt=""></a>
+              <div class="post-detail"><p class="post-meta">Posted by {{ post.author }} on {{ post.date | date: "%b %-d, %Y" }} <!--<a href="#">Comments (10)</a>--></p></div>
         			<p>
         			  {% if post.content contains '<!--more-->' %}
-                  {{ post.content | split:'<!--more-->' | first }}
+                  {{ post.content | split:'<!--more-->' | first }}...
                 {% else %}
                   {{ post.excerpt }}
                 {% endif %}
@@ -46,7 +45,7 @@ layout: default
                           {% endif %}
                         {% endunless %}
                               <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-                          {% if post.date.last %}
+                          {% if post.last %}
                             </ul></div>
                           {% endif %}
                       {% endfor %}
@@ -57,43 +56,24 @@ layout: default
 
 						<div class="recent">
 							<h4>Recent posts</h4>
+							
+					{% for post in site.posts limit: 4 %}
 							<div class="recent-top">
 								<div class="col-md-4 recent-left">
-									<img src="assets/recent-1.jpg" alt="">
-								</div>
+									<img src="/assets/recent-1.jpg" alt="">
+								</div> <!-- End col-md-4 recent-left -->
 								<div class="col-md-8 recent-left">
-									<span>MARCH 13, 2013 9:31 AM</span>
-									<h5>Fusce suscipit varius</h5>
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent vestibulum molestie lacus.</p>
-								</div>
+									<span>{{ post.date | date: "%b %-d, %Y" }}</span>
+									<a href="{{ post.url }}"><h5>{{ post.title }}</h5></a>
+									<p>{{ post.content | truncatewords: 20 }}</p>
+								</div> <!-- End col-md-8 recent-left -->
 								<div class="clearfix"></div>
-							</div>
-							<div class="recent-top">
-								<div class="col-md-4 recent-left">
-									<img src="assets/recent-3.jpg" alt="">
-								</div>
-								<div class="col-md-8 recent-left">
-									<span>MARCH 13, 2013 9:31 AM</span>
-									<h5>Fusce suscipit varius</h5>
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent vestibulum molestie lacus.</p>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-							<div class="recent-top">
-								<div class="col-md-4 recent-left">
-									<img src="assets/recent-2.jpg" alt="">
-								</div>
-								<div class="col-md-8 recent-left">
-									<span>MARCH 13, 2013 9:31 AM</span>
-									<h5>Fusce suscipit varius</h5>
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent vestibulum molestie lacus.</p>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-					</div>
+							</div> <!-- End recent-top -->
+					{% endfor %}
+						</div><!-- End recent -->
+					</div><!-- end col-md-4 blog-right -->
 					<div class="clearfix"></div>
-				</div>
+				</div> <!-- End blog-top -->
 				<div class="blog-bottom">
 					<ul>
 						<li><a href="#" class="active">PREV</a></li>

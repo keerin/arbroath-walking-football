@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title:  "First post of 2015!"
 date:   2015-05-25 16:14:15 +0100
 author: "Jackie"
