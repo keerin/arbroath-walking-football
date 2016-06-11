@@ -1,0 +1,63 @@
+---
+layout: default
+---
+<!--start-blog-->
+	<div class="blog">
+		<div class="container">
+			<div class="blog-main">
+				<h3>BLOG</h3>
+				<div class="blog-top">
+				  <div class="col-md-8 blog-left">
+            {% for post in paginator.posts %}
+              <div class="blog-top-left">
+                <h4>
+                  <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                </h4>
+              <div class="post-detail"><p class="post-meta">Posted by {{ post.author }} on {{ post.date | date: "%b %-d, %Y" }} <!--<a href="#">Comments (10)</a>--></p></div>
+        			<p>
+        			  {% if post.content contains '<!--more-->' %}
+                  {{ post.content | split:'<!--more-->' | first }}...
+                {% else %}
+                  {{ post.excerpt }}
+                {% endif %}
+              </p>
+        			<div class="blog-btn">
+  			        <a href="{{ post.url | prepend: site.baseurl }}">Read more</a>
+         			</div>
+        		</div>
+        {% endfor %}
+    <!-- Thanks to this dude from whom I stole the 'more' code from:
+         http://briankhuu.com/blog/self/jekyll/2014/12/03/post-truncation-in-jekyll.html
+    -->
+          </div>
+					<div class="col-md-4 blog-right">
+						{% include archives.html %}
+						
+
+						<div class="recent">
+							<h4>Recent posts</h4>
+							
+					{% for post in site.posts limit: 4 %}
+							<div class="recent-top">
+								<div class="col-md-4 recent-left">
+									<img src="/assets/recent-1.jpg" alt="">
+								</div> <!-- End col-md-4 recent-left -->
+								<div class="col-md-8 recent-left">
+									<span>{{ post.date | date: "%b %-d, %Y" }}</span>
+									<a href="{{ post.url }}"><h5>{{ post.title }}</h5></a>
+									<p>{{ post.content | truncatewords: 20 | strip_html }}</p>
+								</div> <!-- End col-md-8 recent-left -->
+								<div class="clearfix"></div>
+							</div> <!-- End recent-top -->
+					{% endfor %}
+						</div><!-- End recent -->
+					</div><!-- end col-md-4 blog-right -->
+					<div class="clearfix"></div>
+				</div> <!-- End blog-top -->
+				<div class="blog-bottom">
+          {% include pagination.html %}
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--end-blog-->

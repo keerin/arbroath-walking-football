@@ -1,0 +1,21 @@
+						<div class="archives">
+							  <h4>Archives</h4>
+    						  <div id="accordion">
+                      {% for post in site.posts %}
+                        {% unless post.next %}
+                          <h3>{{ post.date | date: '%Y' }}</h3><div><ul>
+                        {% else %}
+                          {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+                          {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
+                          {% if year != nyear %}
+                          </ul></div><h3>{{ post.date | date: '%Y' }}</h3><div><ul>
+                          {% endif %}
+                        {% endunless %}
+                              <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+                          {% if post.last %}
+                            </ul></div>
+                          {% endif %}
+                      {% endfor %}
+                      </div>
+                  </div> <!-- End accordion -->
+						  </div><!-- End archives -->
