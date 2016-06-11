@@ -38,7 +38,7 @@ layout: default
 								<div class="col-md-8 recent-left">
 									<span>{{ post.date | date: "%b %-d, %Y" }}</span>
 									<a href="{{ post.url }}"><h5>{{ post.title }}</h5></a>
-									<p>{{ post.content | truncatewords: 20 }}</p>
+									<p>{{ post.content | truncatewords: 20 | strip_html }}</p>
 								</div> <!-- End col-md-8 recent-left -->
 								<div class="clearfix"></div>
 							</div> <!-- End recent-top -->
