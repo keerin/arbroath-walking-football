@@ -19,31 +19,12 @@ layout: default
               {% endif %}
             {% endfor %}
 -->
+            <h4>{{page.title}}</h4>
             {{ content }}
 					</div>
 				</div>
 					<div class="col-md-4 blog-right">
-						<div class="archives">
-							  <h4>Archives</h4>
-    						  <div id="accordion">
-                      {% for post in site.posts %}
-                        {% unless post.next %}
-                          <h3>{{ post.date | date: '%Y' }}</h3><div><ul>
-                        {% else %}
-                          {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
-                          {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
-                          {% if year != nyear %}
-                          </ul></div><h3>{{ post.date | date: '%Y' }}</h3><div><ul>
-                          {% endif %}
-                        {% endunless %}
-                              <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-                          {% if post.last %}
-                            </ul></div>
-                          {% endif %}
-                      {% endfor %}
-                      </div>
-                  </div> <!-- End accordion -->
-						  </div><!-- End archives -->
+						{% include archives.html %}
 						
 
 						<div class="recent">
@@ -67,17 +48,7 @@ layout: default
 					<div class="clearfix"></div>
 				</div> <!-- End blog-top -->
 				<div class="blog-bottom">
-					<ul>
-						<li><a href="#" class="active">PREV</a></li>
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">...</a></li>
-						<li><a href="#">14</a></li>
-						<li><a href="#">15</a></li>
-						<li><a href="#" class="active">NEXT</a></li>
-					</ul>
+					{% include pagination.html %}
 				</div>
 			</div>
 		</div>
